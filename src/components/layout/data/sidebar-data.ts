@@ -1,56 +1,54 @@
 import {
-  Construction,
+  Globe,
   LayoutDashboard,
-  Monitor,
-  Bug,
-  ListTodo,
-  FileX,
-  HelpCircle,
-  Lock,
-  Bell,
-  Package,
-  Palette,
-  ServerOff,
-  Settings,
-  Wrench,
-  UserCog,
-  UserX,
   Users,
-  MessagesSquare,
-  ShieldCheck,
+  Plug,
+  CreditCard,
+  KeyRound,
+  Settings,
+  Bell,
+  Monitor,
+  Palette,
+  UserCog,
+  Wrench,
+  Bug,
+  Construction,
+  FileX,
+  Lock,
+  ServerOff,
+  UserX,
   AudioWaveform,
   Command,
   GalleryVerticalEnd,
 } from 'lucide-react'
-import { ClerkLogo } from '@/assets/clerk-logo'
 import { type SidebarData } from '../types'
 
 export const sidebarData: SidebarData = {
   user: {
-    name: 'satnaing',
-    email: 'satnaingdev@gmail.com',
+    name: 'Admin User',
+    email: 'admin@threatlens.io',
     avatar: '/avatars/shadcn.jpg',
   },
   teams: [
     {
-      name: 'Shadcn Admin',
+      name: 'ThreatLens Security',
       logo: Command,
-      plan: 'Vite + ShadcnUI',
-    },
-    {
-      name: 'Acme Inc',
-      logo: GalleryVerticalEnd,
       plan: 'Enterprise',
     },
     {
-      name: 'Acme Corp.',
+      name: 'Acme Corp',
+      logo: GalleryVerticalEnd,
+      plan: 'Business',
+    },
+    {
+      name: 'StartupSec',
       logo: AudioWaveform,
       plan: 'Startup',
     },
   ],
   navGroups: [
     {
-      title: 'General',
+      title: 'Security',
       items: [
         {
           title: 'Dashboard',
@@ -58,111 +56,35 @@ export const sidebarData: SidebarData = {
           icon: LayoutDashboard,
         },
         {
-          title: 'Tasks',
-          url: '/tasks',
-          icon: ListTodo,
+          title: 'Assets (Domains)',
+          url: '/assets',
+          icon: Globe,
         },
         {
-          title: 'Apps',
-          url: '/apps',
-          icon: Package,
-        },
-        {
-          title: 'Chats',
-          url: '/chats',
-          badge: '3',
-          icon: MessagesSquare,
-        },
-        {
-          title: 'Users',
-          url: '/users',
+          title: 'Team Management',
+          url: '/team',
           icon: Users,
         },
         {
-          title: 'Secured by Clerk',
-          icon: ClerkLogo,
-          items: [
-            {
-              title: 'Sign In',
-              url: '/clerk/sign-in',
-            },
-            {
-              title: 'Sign Up',
-              url: '/clerk/sign-up',
-            },
-            {
-              title: 'User Management',
-              url: '/clerk/user-management',
-            },
-          ],
+          title: 'Integrations',
+          url: '/integrations',
+          icon: Plug,
         },
       ],
     },
     {
-      title: 'Pages',
+      title: 'Account',
       items: [
         {
-          title: 'Auth',
-          icon: ShieldCheck,
-          items: [
-            {
-              title: 'Sign In',
-              url: '/sign-in',
-            },
-            {
-              title: 'Sign In (2 Col)',
-              url: '/sign-in-2',
-            },
-            {
-              title: 'Sign Up',
-              url: '/sign-up',
-            },
-            {
-              title: 'Forgot Password',
-              url: '/forgot-password',
-            },
-            {
-              title: 'OTP',
-              url: '/otp',
-            },
-          ],
+          title: 'Billing',
+          url: '/billing',
+          icon: CreditCard,
         },
         {
-          title: 'Errors',
-          icon: Bug,
-          items: [
-            {
-              title: 'Unauthorized',
-              url: '/errors/unauthorized',
-              icon: Lock,
-            },
-            {
-              title: 'Forbidden',
-              url: '/errors/forbidden',
-              icon: UserX,
-            },
-            {
-              title: 'Not Found',
-              url: '/errors/not-found',
-              icon: FileX,
-            },
-            {
-              title: 'Internal Server Error',
-              url: '/errors/internal-server-error',
-              icon: ServerOff,
-            },
-            {
-              title: 'Maintenance Error',
-              url: '/errors/maintenance-error',
-              icon: Construction,
-            },
-          ],
+          title: 'API Keys',
+          url: '/api-keys',
+          icon: KeyRound,
         },
-      ],
-    },
-    {
-      title: 'Other',
-      items: [
         {
           title: 'Settings',
           icon: Settings,
@@ -194,10 +116,41 @@ export const sidebarData: SidebarData = {
             },
           ],
         },
+      ],
+    },
+    {
+      title: 'Pages',
+      items: [
         {
-          title: 'Help Center',
-          url: '/help-center',
-          icon: HelpCircle,
+          title: 'Errors',
+          icon: Bug,
+          items: [
+            {
+              title: 'Unauthorized',
+              url: '/errors/unauthorized',
+              icon: Lock,
+            },
+            {
+              title: 'Forbidden',
+              url: '/errors/forbidden',
+              icon: UserX,
+            },
+            {
+              title: 'Not Found',
+              url: '/errors/not-found',
+              icon: FileX,
+            },
+            {
+              title: 'Internal Server Error',
+              url: '/errors/internal-server-error',
+              icon: ServerOff,
+            },
+            {
+              title: 'Maintenance Error',
+              url: '/errors/maintenance-error',
+              icon: Construction,
+            },
+          ],
         },
       ],
     },
