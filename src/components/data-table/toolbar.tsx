@@ -1,5 +1,6 @@
-import { Cross2Icon } from '@radix-ui/react-icons'
+import { Cross2Icon, DownloadIcon } from '@radix-ui/react-icons'
 import { type Table } from '@tanstack/react-table'
+import { exportTableToCSV } from '@/lib/export-table-to-csv'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { DataTableFacetedFilter } from './faceted-filter'
@@ -18,6 +19,8 @@ type DataTableToolbarProps<TData> = {
       icon?: React.ComponentType<{ className?: string }>
     }[]
   }[]
+  /** When provided an "Export CSV" button is shown. The value is used as the download file name. */
+  exportFilename?: string
 }
 
 export function DataTableToolbar<TData>({
@@ -25,6 +28,7 @@ export function DataTableToolbar<TData>({
   searchPlaceholder = 'Filter...',
   searchKey,
   filters = [],
+  exportFilename,
 }: DataTableToolbarProps<TData>) {
   const isFiltered =
     table.getState().columnFilters.length > 0 || table.getState().globalFilter
@@ -80,6 +84,17 @@ export function DataTableToolbar<TData>({
         )}
       </div>
       <DataTableViewOptions table={table} />
+      {exportFilename && (
+        <Button
+          variant='outline'
+          size='sm'
+          className='ms-2 h-8'
+          onClick={() => exportTableToCSV(table, exportFilename)}
+        >
+          <DownloadIcon className='size-4' />
+          Export CSV
+        </Button>
+      )}
     </div>
   )
 }

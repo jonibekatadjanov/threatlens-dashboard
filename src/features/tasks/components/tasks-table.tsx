@@ -126,6 +126,7 @@ export function TasksTable({ data }: DataTableProps) {
             options: priorities,
           },
         ]}
+        exportFilename='tasks'
       />
       <div className='overflow-hidden rounded-md border'>
         <Table className='min-w-xl'>
