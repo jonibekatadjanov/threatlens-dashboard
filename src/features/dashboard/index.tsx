@@ -24,6 +24,8 @@ import { Main } from '@/components/layout/main'
 import { ProfileDropdown } from '@/components/profile-dropdown'
 import { Search } from '@/components/search'
 import { ThemeSwitch } from '@/components/theme-switch'
+import { mockThreats } from './data/mock-threats'
+import { ThreatMap } from './components/ThreatMap'
 
 const summaryStats = [
   {
@@ -161,6 +163,29 @@ export function Dashboard() {
             </Card>
           ))}
         </div>
+
+        {/* Live Threats Map */}
+        <Card className='mb-6'>
+          <CardHeader className='pb-2'>
+            <div className='flex items-center justify-between'>
+              <div>
+                <CardTitle className='text-sm font-medium'>
+                  Live Threats
+                </CardTitle>
+                <CardDescription>
+                  Real-time global attack origins
+                </CardDescription>
+              </div>
+              <Badge variant='destructive' className='gap-1'>
+                <span className='inline-block h-1.5 w-1.5 animate-ping rounded-full bg-white' />
+                {mockThreats.length} Active
+              </Badge>
+            </div>
+          </CardHeader>
+          <CardContent className='h-64 p-0 sm:h-80'>
+            <ThreatMap />
+          </CardContent>
+        </Card>
 
         {/* Usage Tracker */}
         <Card className='mb-6'>
