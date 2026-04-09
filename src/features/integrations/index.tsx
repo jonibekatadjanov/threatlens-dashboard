@@ -36,12 +36,6 @@ interface Integration {
   connected: boolean
   webhookUrl: string
   criticalOnly: boolean
-  alertTypes: {
-    sqli: boolean
-    xss: boolean
-    rce: boolean
-    ssrf: boolean
-  }
 }
 
 const initialIntegrations: Integration[] = [
@@ -54,7 +48,6 @@ const initialIntegrations: Integration[] = [
     connected: true,
     webhookUrl: 'https://api.telegram.org/bot<TOKEN>/sendMessage',
     criticalOnly: true,
-    alertTypes: { sqli: true, xss: true, rce: true, ssrf: false },
   },
   {
     id: 'discord',
@@ -65,7 +58,6 @@ const initialIntegrations: Integration[] = [
     connected: false,
     webhookUrl: '',
     criticalOnly: false,
-    alertTypes: { sqli: true, xss: true, rce: true, ssrf: true },
   },
   {
     id: 'slack',
@@ -76,7 +68,6 @@ const initialIntegrations: Integration[] = [
     connected: false,
     webhookUrl: '',
     criticalOnly: false,
-    alertTypes: { sqli: false, xss: false, rce: true, ssrf: false },
   },
 ]
 
@@ -149,35 +140,6 @@ function IntegrationCard({
           <p className='text-muted-foreground text-xs'>
             Only send alerts for high-severity vulnerabilities (SQLi, XSS, RCE)
           </p>
-        </div>
-
-        <div className='space-y-2'>
-          <Label className='text-xs font-medium'>Alert Types</Label>
-          <div className='grid grid-cols-2 gap-2'>
-            {(
-              Object.entries(data.alertTypes) as [
-                keyof Integration['alertTypes'],
-                boolean,
-              ][]
-            ).map(([type, enabled]) => (
-              <div
-                key={type}
-                className='flex items-center justify-between rounded-md border px-3 py-1.5'
-              >
-                <span className='text-xs font-medium uppercase'>{type}</span>
-                <Switch
-                  checked={enabled}
-                  onCheckedChange={(checked) =>
-                    setData((prev) => ({
-                      ...prev,
-                      alertTypes: { ...prev.alertTypes, [type]: checked },
-                    }))
-                  }
-                  className='scale-75'
-                />
-              </div>
-            ))}
-          </div>
         </div>
       </CardContent>
       <CardFooter className='gap-2'>
